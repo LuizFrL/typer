@@ -22,7 +22,7 @@ function verificarFrase() {
                 "showMethod": "fadeIn",
                 "hideMethod": "fadeOut"
             }
-
+            adicionaPlacar()
             tempoDigitacao = $("#Tempo").text('1')
         }
         else if (fraseInicial.substr(0, textoDigit.length) == textoDigit) {

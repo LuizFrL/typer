@@ -1,15 +1,14 @@
 function removerPlacar() {
-    $("#removerPlacar").click(function(){
+    $("#removerPlacar").click(function () {
         var linha = $(this).parent().parent()
         linha.fadeOut()
-        setInterval(function(){
+        setInterval(function () {
             linha.remove()
         }, 500)
     })
-    
 }
 
-function adicionaPlacar(){
+function adicionaPlacar() {
     var campoTabela = $('.placar').find('tbody')
 
     var linha = NovaLinha();
@@ -19,24 +18,25 @@ function adicionaPlacar(){
     mostra()
     var posicao = $('.placar').offset().top
     $("body").animate({
-        scrollTop : posicao
+        scrollTop: posicao
     }, 500)
 }
 
 function NovaLinha() {
-    
+
     var tr = $("<tr>")
-    var usuario = $("<td>").text($("#displayName").text())
+
+    var usuario = montaTdUsuario()
     var palavras = $("<td>").text($('#quantidadePalavras').text())
-    var remover = $("<td>").append($('<a class="btn-floating waves-effect light-blue botao-remover" id="removerPlacar"><i class="material-icons">delete</i></a>'))
     var erro = $("<td>").text(contador_erro)
-    
+    var idFrase = $("<td>").text($("#id-frase").text())
+
     contador_erro = 0;
     tr.append(usuario)
     tr.append(palavras)
     tr.append(erro)
-    tr.append(remover)
-    
+    tr.append(idFrase)
+
 
     return tr
 }
@@ -62,4 +62,21 @@ function esconderPlacar() {
         $('#mostrar-placar').toggleClass("sumir")
 
     })
+}
+
+function montaTdUsuario() {
+    var td = $("<td>")
+    var div = $('<div>').addClass("col s2")
+    var span = $("<span>").text( $("#displayName").text()).attr('id', 'span-texto')
+    var image = $('<img>')
+    .addClass('circle responsive-img')
+    .attr('src', $("#photoURL").attr('src'))
+    .attr('id','placar-imagem')
+    div.prepend(span)
+    div.prepend(image)
+    td.prepend(div)
+    
+    return td
+
+
 }

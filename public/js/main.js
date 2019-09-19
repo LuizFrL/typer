@@ -9,7 +9,7 @@ function finalGame() {
             tempoDigitacao--
             $("#Tempo").text(tempoDigitacao)
 
-            if (tempoDigitacao <= 0) {
+            if (tempoDigitacao == 0) {
                 finalizaJogo()
                 clearInterval(tempoID)
             }
@@ -20,10 +20,10 @@ function finalGame() {
 function finalizaJogo(){
     textoDigitado.attr("disabled", true)
     textoDigitado.addClass("finalizado")
-    adicionaPlacar()
     
-    removerPlacar()
-
+    $('#Tempo').text('1')
+    reiniciarJogo()
+    
     $("#quantidadePalavras").text('')
     $("#quantidadeCaracters").text('')
 }
@@ -32,7 +32,7 @@ function reiniciarJogo() {
 
     $('#reiniciar-jogo').one("click", function () {
         
-        $('#Tempo').text('1')
+        
         textoDigitado.val('')
         textoDigitado.attr("disabled", false)
         textoDigiLen()

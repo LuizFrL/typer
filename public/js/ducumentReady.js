@@ -3,7 +3,6 @@ $(document).ready(function () {
     textoDigiLen()
     palavraQtdFrase()
     verificarFrase()
-    removerPlacar()
     finalGame()
     mostrarPlacar()
     esconderPlacar()

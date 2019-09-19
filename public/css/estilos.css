@@ -47,3 +47,9 @@ body{
 p{
     padding: 5px;
 }
+#placar-imagem{
+    height: 24px;
+}
+#span-texto{
+    padding: 6px;
+}
