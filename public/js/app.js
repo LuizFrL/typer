@@ -21,6 +21,12 @@ firebase.auth().onAuthStateChanged(function (user) {
     $("#displayName").text(user.displayName)
     $("#email").text(user.email)
 
+    firebase.database().ref('users/' + user.uid).set({
+      username: user.displayName,
+      email: user.email,
+      profile_picture : user.photoURL
+    });
+
     console.log(user);
   } else {
     if (window.location.pathname != '/index.html') {

@@ -1,3 +1,13 @@
+var campoTabela = $('.placar').find('tbody')
+firebase.database().ref('placar/').on('value', function (snapshot) {
+    snapshot.forEach(element => {
+        var placar = element.val().placar;
+        var linha = $('<tr>');
+        linha.append(placar);
+        campoTabela.prepend(linha);
+    });
+})
+
 function removerPlacar() {
     $("#removerPlacar").click(function () {
         var linha = $(this).parent().parent()
@@ -9,11 +19,11 @@ function removerPlacar() {
 }
 
 function adicionaPlacar() {
-    var campoTabela = $('.placar').find('tbody')
-
     var linha = NovaLinha();
 
-    campoTabela.prepend(linha)
+    firebase.database().ref('placar/').push({
+        placar : linha.html()
+      });
     reiniciarJogo()
     mostra()
     var posicao = $('.placar').offset().top
@@ -21,6 +31,7 @@ function adicionaPlacar() {
         scrollTop: posicao
     }, 500)
 }
+
 
 function NovaLinha() {
 
