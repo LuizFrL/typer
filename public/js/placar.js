@@ -4,7 +4,7 @@ firebase.database().ref('placar/').on('child_added', function (snapshot) {
     var td = snapshot.val().placar;
     var linha = $('<tr>');
     linha.append(td);
-    campoTabela.append(linha);
+    campoTabela.prepend(linha);
     debugger
 })
 
