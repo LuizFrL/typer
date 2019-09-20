@@ -1,11 +1,11 @@
 var campoTabela = $('.placar').find('tbody')
-firebase.database().ref('placar/').on('value', function (snapshot) {
-    snapshot.forEach(element => {
-        var placar = element.val().placar;
-        var linha = $('<tr>');
-        linha.append(placar);
-        campoTabela.prepend(linha);
-    });
+
+firebase.database().ref('placar/').on('child_added', function (snapshot) {
+    var td = snapshot.val().placar;
+    var linha = $('<tr>');
+    linha.append(td);
+    campoTabela.append(linha);
+    debugger
 })
 
 function removerPlacar() {
@@ -22,8 +22,8 @@ function adicionaPlacar() {
     var linha = NovaLinha();
 
     firebase.database().ref('placar/').push({
-        placar : linha.html()
-      });
+        placar: linha.html()
+    });
     reiniciarJogo()
     mostra()
     var posicao = $('.placar').offset().top
@@ -78,15 +78,15 @@ function esconderPlacar() {
 function montaTdUsuario() {
     var td = $("<td>")
     var div = $('<div>').addClass("col s2")
-    var span = $("<span>").text( $("#displayName").text()).attr('id', 'span-texto')
+    var span = $("<span>").text($("#displayName").text()).attr('id', 'span-texto')
     var image = $('<img>')
-    .addClass('circle responsive-img')
-    .attr('src', $("#photoURL").attr('src'))
-    .attr('id','placar-imagem')
+        .addClass('circle responsive-img')
+        .attr('src', $("#photoURL").attr('src'))
+        .attr('id', 'placar-imagem')
     div.prepend(span)
     div.prepend(image)
     td.prepend(div)
-    
+
     return td
 
 
