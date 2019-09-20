@@ -38,6 +38,7 @@ body{
 }
 #spinner{
     display: none;
+    height: 100px;
 }
 
 #idFrase {

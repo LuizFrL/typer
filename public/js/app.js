@@ -24,7 +24,7 @@ firebase.auth().onAuthStateChanged(function (user) {
     firebase.database().ref('users/' + user.uid).set({
       username: user.displayName,
       email: user.email,
-      profile_picture : user.photoURL
+      profile_picture: user.photoURL
     });
 
     console.log(user);
@@ -36,6 +36,7 @@ firebase.auth().onAuthStateChanged(function (user) {
 });
 
 $("#login-google").click(function () {
+  $("#spinner").toggle()
   var provider = new firebase.auth.GoogleAuthProvider();
   firebase.auth().signInWithRedirect(provider)
     .catch(function (error) {
