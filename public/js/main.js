@@ -26,22 +26,21 @@ function finalizaJogo(){
     
     $("#quantidadePalavras").text('')
     $("#quantidadeCaracters").text('')
+
 }
 
 function reiniciarJogo() {
-
     $('#reiniciar-jogo').one("click", function () {
-        
-        
         textoDigitado.val('')
         textoDigitado.attr("disabled", false)
         textoDigiLen()
         palavraQtdFrase()
         $("#Tempo").text(tempoInicial)
-        finalGame()
         textoDigitado.removeClass("finalizado")
         textoDigitado.removeClass('borda-verde')
         textoDigitado.removeClass('borda-vermelha')
+        finalGame()
+        textoDigitado.focus()
     })
 }
 

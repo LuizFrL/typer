@@ -33,7 +33,7 @@ function trocaFrase(data) {
 
     atualizatempoInicial(data[idFrase].tempo + Math.floor(Math.random() * 10))
     palavraFrase()
-    
+    reinicia()
 
 }
 
@@ -69,5 +69,12 @@ function selecionarFrase() {
 
     atualizatempoInicial(data_firebase[idFrase].tempo + Math.floor(Math.random() * 10))
     palavraFrase()
+    reinicia()
+
 }
 
+function reinicia(){
+    if ($('.Texto-Digitado').hasClass("finalizado")){
+        $('#reiniciar-jogo').click()    
+    }
+}
