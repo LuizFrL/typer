@@ -5,7 +5,7 @@ firebase.database().ref('placar/').on('child_added', function (snapshot) {
     var linha = $('<tr>');
     linha.append(td);
     campoTabela.prepend(linha);
-    debugger
+
 })
 
 function removerPlacar() {
@@ -88,6 +88,4 @@ function montaTdUsuario() {
     td.prepend(div)
 
     return td
-
-
 }

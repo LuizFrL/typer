@@ -8,12 +8,13 @@ function finalGame() {
             var tempoDigitacao = $("#Tempo").text()
             tempoDigitacao--
             $("#Tempo").text(tempoDigitacao)
-
             if (tempoDigitacao == 0) {
                 finalizaJogo()
                 clearInterval(tempoID)
+                finalGame()
             }
         }, 1000)
+
     })
 }
 
@@ -39,7 +40,6 @@ function reiniciarJogo() {
         textoDigitado.removeClass("finalizado")
         textoDigitado.removeClass('borda-verde')
         textoDigitado.removeClass('borda-vermelha')
-        finalGame()
         textoDigitado.focus()
     })
 }
